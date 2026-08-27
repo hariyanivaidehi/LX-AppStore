@@ -14,6 +14,3 @@ Official direct high-speed APK & XAPK download network with authentic version ve
 - **Previous Versions Modal**: Grouped side-by-side action buttons for quick version selection and wishlist toggles.
 - **Direct Downloads**: Direct high-speed download triggers for APK and XAPK files.
 
-## 👥 Contributors
-- **Vaidehi Hariyani** ([@hariyanivaidehi](https://github.com/hariyanivaidehi))
-- **Yagnik Hariyani** ([@YAGNIKHARIYANI](https://github.com/YAGNIKHARIYANI))
