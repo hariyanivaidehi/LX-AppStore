@@ -899,8 +899,9 @@ body {
   padding: 20px;
   margin-bottom: 28px;
   line-height: 1.7;
-  word-break: break-word;
+  word-break: normal;
   overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .app-description-box h4 {
@@ -941,7 +942,9 @@ body {
 
 .tech-specs-table td:last-child {
   font-weight: 700;
-  word-break: break-all;
+  word-break: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .copy-hash-btn {
