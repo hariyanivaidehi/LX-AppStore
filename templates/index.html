@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LX APP STORE - Free Android APK & Game Downloads</title>
+  <meta name="description" content="LX APP STORE: Discover, explore and download the latest verified Android APKs, XAPKs and games with direct high-speed downloads and version history.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand-group">
+        <div class="nav-brand" onclick="navigateTo('home')">
+          <div class="logo-badge">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <span class="brand-title">LX <span class="brand-highlight">APP STORE</span></span>
+        </div>
+        
+        <!-- Desktop Navigation Tabs -->
+        <nav class="nav-tabs-desktop">
+          <button class="nav-tab active" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+          <button class="nav-tab" data-view="games"><i class="fa-solid fa-gamepad"></i> Games</button>
+          <button class="nav-tab" data-view="apps"><i class="fa-solid fa-fire"></i> Apps</button>
+          <button class="nav-tab" data-view="new"><i class="fa-solid fa-clock-rotate-left"></i> New</button>
+          <button class="nav-tab" data-view="categories"><i class="fa-solid fa-shapes"></i> Categories</button>
+        </nav>
+      </div>
+
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search apps & games (e.g. WhatsApp, Minecraft)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search hidden"><i class="fa-solid fa-xmark"></i></button>
+        <div id="searchDropdown" class="search-dropdown hidden"></div>
+      </div>
+
+      <!-- Mobile Menu Bar (Row below search on mobile) -->
+      <div class="mobile-menu-bar">
+        <button id="menuToggleBtn" class="menu-btn-bar" title="Open Menu">
+          <i class="fa-solid fa-bars"></i> Explore Categories / Menu
+        </button>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="icon-btn wishlist-btn" onclick="openWishlistModal()" title="My Wishlist">
+          <i class="fa-solid fa-bookmark"></i>
+          <span id="wishlistBadge" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Tabs -->
+    <nav class="nav-tabs-wrapper">
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="nav-tab" data-view="games"><i class="fa-solid fa-gamepad"></i> Games</button>
+        <button class="nav-tab" data-view="apps"><i class="fa-solid fa-fire"></i> Apps</button>
+        <button class="nav-tab" data-view="new"><i class="fa-solid fa-clock-rotate-left"></i> New</button>
+        <button class="nav-tab" data-view="categories"><i class="fa-solid fa-shapes"></i> Categories</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+    <!-- Hero Banner (Home View) -->
+    <section id="heroSection" class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> 100% Safe & Verified APK Repository</div>
+        <h1 class="hero-title">LX APP STORE</h1>
+        <p class="hero-subtitle">High-speed, authentic APK & XAPK downloads with instant hash verification, screenshot galleries, and version history.</p>
+        <div class="hero-quick-tags">
+          <span>Trending Searches:</span>
+          <button class="quick-tag" onclick="quickSearch('WhatsApp')">WhatsApp</button>
+          <button class="quick-tag" onclick="quickSearch('Subway Surfers')">Subway Surfers</button>
+          <button class="quick-tag" onclick="quickSearch('Instagram')">Instagram</button>
+          <button class="quick-tag" onclick="quickSearch('Free Fire')">Free Fire</button>
+          <button class="quick-tag" onclick="quickSearch('Telegram')">Telegram</button>
+          <button class="quick-tag" onclick="quickSearch('Spotify')">Spotify</button>
+          <button class="quick-tag" onclick="quickSearch('CapCut')">CapCut</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Strip -->
+    <section class="category-strip-wrapper">
+      <div id="categoryChips" class="category-chips">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <div id="viewContainer">
+      <div id="loadingSpinner" class="loading-state">
+        <div class="spinner"></div>
+        <p>Connecting to LX App Store repository...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- App Detail Modal / Second Page -->
+  <div id="appModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeAppModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalBody" class="modal-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Versions Modal -->
+  <div id="versionsModal" class="modal-overlay hidden">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3 id="versionsModalTitle"><i class="fa-solid fa-code-branch"></i> Version History</h3>
+        <button class="modal-close" onclick="closeVersionsModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="versionsModalBody" class="versions-list-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div id="wishlistModal" class="modal-overlay hidden">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-bookmark"></i> Wishlist Apps</h3>
+        <button class="modal-close" onclick="closeWishlistModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="wishlistModalBody" class="wishlist-list-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobileSidebar" class="sidebar-overlay hidden" style="z-index: 250;">
+    <div class="sidebar-menu">
+      <div class="sidebar-header">
+        <span class="brand-title">LX <span class="brand-highlight">APP STORE</span></span>
+        <button id="closeSidebarBtn" class="icon-btn close-sidebar-btn" title="Close Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="sidebar-tabs">
+        <button class="sidebar-tab active" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="sidebar-tab" data-view="games"><i class="fa-solid fa-gamepad"></i> Games</button>
+        <button class="sidebar-tab" data-view="apps"><i class="fa-solid fa-fire"></i> Apps</button>
+        <button class="sidebar-tab" data-view="new"><i class="fa-solid fa-clock-rotate-left"></i> New</button>
+        <button class="sidebar-tab" data-view="categories"><i class="fa-solid fa-shapes"></i> Categories</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Custom Confirm Modal -->
+  <div id="confirmModal" class="modal-overlay hidden" style="z-index: 200;">
+    <div class="confirm-card">
+      <p id="confirmMessage" class="confirm-message">Are you sure you want to delete this app?</p>
+      <div class="confirm-actions">
+        <button id="confirmCancelBtn" class="confirm-btn btn-cancel">No</button>
+        <button id="confirmYesBtn" class="confirm-btn btn-confirm">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screenshots Lightbox -->
+  <div id="lightboxModal" class="modal-overlay hidden lightbox-overlay" onclick="closeLightbox()">
+    <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <img id="lightboxImg" src="" alt="Screenshot">
+  </div>
+
+  <!-- Download Status Toast / Banner -->
+  <div id="downloadBanner" class="download-banner hidden">
+    <div class="download-banner-content">
+      <div class="spinner sm"></div>
+      <div class="download-banner-text">
+        <div id="downloadBannerTitle" class="download-banner-title">Downloading APK...</div>
+        <div id="downloadBannerSub" class="download-banner-sub">Your file download will begin automatically.</div>
+      </div>
+      <button class="download-banner-close" onclick="closeDownloadBanner()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast hidden"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-badge sm"><i class="fa-solid fa-layer-group"></i></div>
+        <span>LX APP STORE</span>
+      </div>
+      <p class="footer-text">Official direct high-speed APK & XAPK download network with authentic version verification.</p>
+      <p class="footer-credits" style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Developed by Yagnik Hariyani & Vaidehi Hariyani</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
