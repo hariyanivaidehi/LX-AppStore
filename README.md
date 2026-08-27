@@ -2,9 +2,6 @@
 
 A modern, responsive, and high-performance Web App Store built with **Flask (Python)** and **Vanilla JS**. It serves as a secure direct high-speed network for downloading APK & XAPK files with authentic version verification, metadata, screenshots, and version histories.
 
-## 🚀 Live Demo
-[https://lxappstore.vercel.app/](https://lxappstore.vercel.app/)
-
 ---
 
 ## 🛠️ Tech Stack & Architecture
